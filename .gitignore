@@ -1,0 +1,33 @@
+# Lake dependencies, build products, and verification logs
+.lake/
+
+# Lean compilation artifacts
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
+*.ir
+*.trace
+
+# Logs and Python caches
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor and operating system files
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+
+# Local backups and archives
+*.bak
+*.backup
+*.zip
+*.rar
+*.tar
+*.tar.gz
+*.tgz

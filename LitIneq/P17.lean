@@ -1,0 +1,95 @@
+import Mathlib
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Convert
+import Mathlib.Tactic.IntervalCases
+set_option maxHeartbeats 0
+set_option maxRecDepth 100000
+set_option linter.unnecessarySeqFocus false
+set_option linter.unusedVariables false
+
+namespace Lean92.BoxPoly45_BoxPoly45_17
+
+theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (4 : ℝ) ≤ x1) (hu0 : x1 ≤ (3969/625 : ℝ)) (hl1 : (4 : ℝ) ≤ x2) (hu1 : x2 ≤ (3969/625 : ℝ)) (hl2 : (4 : ℝ) ≤ x3) (hu2 : x3 ≤ (3969/625 : ℝ)) (hl3 : (4 : ℝ) ≤ x4) (hu3 : x4 ≤ (3969/625 : ℝ)) (hl4 : (4 : ℝ) ≤ x5) (hu4 : x5 ≤ (3969/625 : ℝ)) (hl5 : (4 : ℝ) ≤ x6) (hu5 : x6 ≤ (3969/625 : ℝ)) : (0 : ℝ) ≤ -x1^2*x4 + x1*x2*x4 + x1*x2*x5 - x1*x2*x6 + x1*x3*x4 - x1*x3*x5 + x1*x3*x6 - x1*x4^2 + x1*x4*x5 + x1*x4*x6 - x2^2*x5 - x2*x3*x4 + x2*x3*x5 + x2*x3*x6 + x2*x4*x5 - x2*x5^2 + x2*x5*x6 - x3^2*x6 + x3*x4*x6 + x3*x5*x6 - x3*x6^2 - x4*x5*x6 := by
+  let t0 : ℝ := (x1 - (4)) / (1469/625)
+  have ht0 : 0 ≤ t0 := by dsimp [t0]; positivity
+  have ht0u : t0 ≤ 1 := by dsimp [t0]; apply (div_le_one (by norm_num)).2; linarith
+  have htc0 : 0 ≤ 1 - t0 := sub_nonneg.mpr ht0u
+  have hv0 : x1 = (4) + (1469/625) * t0 := by dsimp [t0]; ring
+  let t1 : ℝ := (x2 - (4)) / (1469/625)
+  have ht1 : 0 ≤ t1 := by dsimp [t1]; positivity
+  have ht1u : t1 ≤ 1 := by dsimp [t1]; apply (div_le_one (by norm_num)).2; linarith
+  have htc1 : 0 ≤ 1 - t1 := sub_nonneg.mpr ht1u
+  have hv1 : x2 = (4) + (1469/625) * t1 := by dsimp [t1]; ring
+  let t2 : ℝ := (x3 - (4)) / (1469/625)
+  have ht2 : 0 ≤ t2 := by dsimp [t2]; positivity
+  have ht2u : t2 ≤ 1 := by dsimp [t2]; apply (div_le_one (by norm_num)).2; linarith
+  have htc2 : 0 ≤ 1 - t2 := sub_nonneg.mpr ht2u
+  have hv2 : x3 = (4) + (1469/625) * t2 := by dsimp [t2]; ring
+  let t3 : ℝ := (x4 - (4)) / (1469/625)
+  have ht3 : 0 ≤ t3 := by dsimp [t3]; positivity
+  have ht3u : t3 ≤ 1 := by dsimp [t3]; apply (div_le_one (by norm_num)).2; linarith
+  have htc3 : 0 ≤ 1 - t3 := sub_nonneg.mpr ht3u
+  have hv3 : x4 = (4) + (1469/625) * t3 := by dsimp [t3]; ring
+  let t4 : ℝ := (x5 - (4)) / (1469/625)
+  have ht4 : 0 ≤ t4 := by dsimp [t4]; positivity
+  have ht4u : t4 ≤ 1 := by dsimp [t4]; apply (div_le_one (by norm_num)).2; linarith
+  have htc4 : 0 ≤ 1 - t4 := sub_nonneg.mpr ht4u
+  have hv4 : x5 = (4) + (1469/625) * t4 := by dsimp [t4]; ring
+  let t5 : ℝ := (x6 - (4)) / (1469/625)
+  have ht5 : 0 ≤ t5 := by dsimp [t5]; positivity
+  have ht5u : t5 ≤ 1 := by dsimp [t5]; apply (div_le_one (by norm_num)).2; linarith
+  have htc5 : 0 ≤ 1 - t5 := sub_nonneg.mpr ht5u
+  have hv5 : x6 = (4) + (1469/625) * t5 := by dsimp [t5]; ring
+  have hid : (-x1^2*x4 + x1*x2*x4 + x1*x2*x5 - x1*x2*x6 + x1*x3*x4 - x1*x3*x5 + x1*x3*x6 - x1*x4^2 + x1*x4*x5 + x1*x4*x6 - x2^2*x5 - x2*x3*x4 + x2*x3*x5 + x2*x3*x6 + x2*x4*x5 - x2*x5^2 + x2*x5*x6 - x3^2*x6 + x3*x4*x6 + x3*x5*x6 - x3*x6^2 - x4*x5*x6) = ((128) + (8288728201/1953125000) * (t0*t1) + (95828574127/5859375000) * (t0*t4) + (5332674011986430447/431835937500000000) * (t1*t2) + (870581272354137623042436440443/40211741075498437500000000000) * (t2*t3) + (16290435627816456433319593289/20105870537749218750000000000) * (t2*(1 - t2)) + (8631844/390625) * (t4*t5) + (3385729618921/114501953125) * (t4*(1 - t4)) + (114353586153471370035990421879/3655612825045312500000000000) * (t5*(1 - t5)) + (3170044709/244140625) * (t0*t1*t4) + (106090624110240415426480211837/2513233817218652343750000000) * (t0*t1*(1 - t0)) + (3170044709/244140625) * (t0*t1*(1 - t5)) + (14718176813346661165401709/8042348215099687500000000) * (t0*t2*(1 - t2)) + (3170044709/244140625) * (t0*t2*(1 - t4)) + (33649085873/5859375000) * (t0*t4*(1 - t0)) + (22970530387404051008822327309/5026467634437304687500000000) * (t0*t5*(1 - t0)) + (63627122639942400172926372691/5026467634437304687500000000) * (t0*t5*(1 - t3)) + (89774077929624506135646011837/2513233817218652343750000000) * (t0*(1 - t0)*(1 - t1)) + (2642469868028913/11450195312500000) * (t1^2*(1 - t1)) + (3170044709/244140625) * (t1*t2*t5) + (4209829530013569553/323876953125000000) * (t1*t2*(1 - t1)) + (64094679918306323/7360839843750000) * (t1*t3*(1 - t1)) + (198253604715606323/14721679687500000) * (t1*t3*(1 - t2)) + (111883103906481323/14721679687500000) * (t1*t3*(1 - t3)) + (3170044709/244140625) * (t1*t4*t5) + (8631844/1171875) * (t1*t5*(1 - t1)) + (17263688/1171875) * (t1*t5*(1 - t3)) + (271790814935271010699491450461/40211741075498437500000000000) * (t2*t3*t5) + (596564165381647021/58886718750000000) * (t2*t3*(1 - t3)) + (3170044709/244140625) * (t2*t4*t5) + (33649085873/2685546875) * (t2*t4*(1 - t1)) + (34259788836/2685546875) * (t2*t4*(1 - t4)) + (250338662844438086607202949539/40211741075498437500000000000) * (t2*(1 - t3)*(1 - t5)) + (33649085873/5859375000) * (t3*t4*(1 - t3)) + (3170044709/488281250) * (t3*t4*(1 - t4)) + (3170044709/244140625) * (t3*t4*(1 - t5)) + (189941273624119750957343913781/5026467634437304687500000000) * (t3*t5*(1 - t3)) + (584381307887/62500000000) * (t3*(1 - t0)*(1 - t3)) + (878290127/585937500) * (t3*(1 - t0)*(1 - t4)) + (2380691633489/187500000000) * (t3*(1 - t0)*(1 - t5)) + (106166212113/31250000000) * (t3*(1 - t2)*(1 - t3)) + (435012958599052996733900017/69812050478295898437500000) * (t5*(1 - t5)^2) + (281292002873832190851624949/104718075717443847656250000) * (t0*t4*t5*(1 - t5)) + (281292002873832190851624949/104718075717443847656250000) * (t0*t5*(1 - t4)*(1 - t5)) + (15036544448978690525909671/8042348215099687500000000) * ((1 - t0)*(t0 + t2)^2) + (11069929440006764339425049/4021174107549843750000000) * ((1 - t2)*(t0 + t2)^2) + (6058156/390625) * ((1 - t1)*(t1 + t4)^2) + (920276631079/114501953125) * ((1 - t4)*(t1 + t4)^2) + (619877133455077075570621050461/40211741075498437500000000000) * ((1 - t2)*(t2 + t5)^2) + (3170044709/732421875) * ((1 - t5)*(t2 + t5)^2) + (2727686405547687414792767/1005293526887460937500000) * (t0*(t2 - 1/16)^2) + (3761907740384843485378949539/157077113576165771484375000) * (t5*(t3 - 1/16)^2) + (774362098001205467767793/251323381721865234375000) * (t0*(t0 - 607/800)^2) + (637039462358/114501953125) * (t1*(t4 - 607/800)^2) + (5876853183937177/3680419921875000) * (t1*(t1 - 7/8)^2) + (28474245365997067582981529/4021174107549843750000000) * (t2*(t2 - 7/8)^2) + (330049010213/31250000000) * (t3*(t3 - 1)^2) + (920276631079/114501953125) * (t4*(t4 - 1)^2) + (3170044709/488281250) * (t2*(t0 + t3 - 0)^2) + (33649085873/5859375000) * (t4*(t0 + t3 - 0)^2) + (32536068499047987719217528533/5026467634437304687500000000) * (t5*(t0 + t3 - 0)^2) + (75716712539/62500000000) * ((1 - t0)*(t0 + t3 - 0)^2) + (330049010213/31250000000) * ((1 - t3)*(t0 + t3 - 0)^2) + (398564087985164029599800051/209436151434887695312500000) * ((1 - t5)*(t0 + t5 - 0)^2) + (8631844/1171875) * (t5*(t1 + t3 - 0)^2) + (3170044709/488281250) * (t1*(t0 + t3 - 1/8)^2) + (7099908762906323/29443359375000000) * (t2*(t1 + t3 - 1/8)^2) + (34259788836/2685546875) * (t2*(t1 + t4 - 1/8)^2) + (3170044709/488281250) * (t3*(t1 + t4 - 1/8)^2) + (3170044709/488281250) * (t0*(t2 + t5 - 1/8)^2) + (1492559808779/114501953125) * (t1*(t1 + t4 - 593/400)^2) + (445833974195174043135056250461/40211741075498437500000000000) * (t2*(t2 + t5 - 3/2)^2) + (16306255930131323/14721679687500000) * (t1*(t1 + t3 - 2)^2)) := by
+    rw [hv0, hv1, hv2, hv3, hv4, hv5]
+    ring
+  rw [hid]
+  positivity
+
+end Lean92.BoxPoly45_BoxPoly45_17
+
+
+set_option linter.style.header false
+set_option linter.unusedVariables false
+
+namespace Leanpro.BoxJsonlWithSources
+
+/-
+dataset_index: 17
+name: Flyspeck Delta 4717061266
+source_status: confirmed_transformed
+basis: 1819
+paper_title: A Tool for Formal Verification of Nonlinear Inequalities
+paper_url: https://github.com/flyspeck/flyspeck
+source_evidence: paper_examples_extract/FormalVerifier.txt:340-355
+
+The theorem statement is a direct Lean syntax translation of the JSONL record:
+constraints are kept in their listed order, and f is not algebraically transformed.
+-/
+theorem box_benchmark_17_flyspeck_delta_4717061266 :
+    ∀ x1 x2 x3 x4 x5 x6 : ℝ,
+      4 <= x1 ∧
+      x1 <= (3969 / 625 : ℝ) ∧
+      4 <= x2 ∧
+      x2 <= (3969 / 625 : ℝ) ∧
+      4 <= x3 ∧
+      x3 <= (3969 / 625 : ℝ) ∧
+      4 <= x4 ∧
+      x4 <= (3969 / 625 : ℝ) ∧
+      4 <= x5 ∧
+      x5 <= (3969 / 625 : ℝ) ∧
+      4 <= x6 ∧
+      x6 <= (3969 / 625 : ℝ) →
+        0 <= -x1^2*x4 + x1*x2*x4 + x1*x2*x5 - x1*x2*x6 + x1*x3*x4 - x1*x3*x5 + x1*x3*x6 - x1*x4^2 + x1*x4*x5 + x1*x4*x6 - x2^2*x5 - x2*x3*x4 + x2*x3*x5 + x2*x3*x6 + x2*x4*x5 - x2*x5^2 + x2*x5*x6 - x3^2*x6 + x3*x4*x6 + x3*x5*x6 - x3*x6^2 - x4*x5*x6 := by
+  intro x1 x2 x3 x4 x5 x6 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5⟩
+  have htranslated := @Lean92.BoxPoly45_BoxPoly45_17.result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
+  convert htranslated using 1 <;> ring
+
+end Leanpro.BoxJsonlWithSources
+
+#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_17_flyspeck_delta_4717061266
