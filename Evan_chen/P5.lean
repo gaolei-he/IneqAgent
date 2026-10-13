@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P5
 
-theorem P5 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a * b * c) * (a * b + b * c + c * a) ≤ a ^ 3 * b * c + b ^ 3 * c * a + c ^ 3 * a * b := by
+theorem P5' {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a * b * c) * (a * b + b * c + c * a) ≤ a ^ 3 * b * c + b ^ 3 * c * a + c ^ 3 * a * b := by
   rw [← sub_nonneg]
   field_simp
   ring_nf
@@ -100,10 +91,7 @@ theorem P5 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a * b *
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P5
 
 
 theorem P5 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a * b * c) * (a * b + b * c + c * a) ≤ a ^ 3 * b * c + b ^ 3 * c * a + c ^ 3 * a * b := by
-  exact @Lean92.Evan_chen_P5.P5 a b c ha hb hc
-
-#print axioms P5
+  exact @P5' a b c ha hb hc

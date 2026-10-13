@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.MO_INT_20_P17
 
-theorem P17 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (b^3 + 3*c^3) / (5*b + c) + (a^3 + 3*b^3) / (5*a + b) + (c^3 + 3*a^3) / (5*c + a) ≥ 2 / 3 * (a^2 + b^2 + c^2) := by
+theorem P17' (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (b^3 + 3*c^3) / (5*b + c) + (a^3 + 3*b^3) / (5*a + b) + (c^3 + 3*a^3) / (5*c + a) ≥ 2 / 3 * (a^2 + b^2 + c^2) := by
   rw [ge_iff_le]
   rw [← sub_nonneg]
   have hden1_pos : 0 < 5*a + b := by
@@ -136,10 +127,7 @@ theorem P17 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (b^3 + 3*c^3)
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.MO_INT_20_P17
 
 
 theorem P17 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : (b^3 + 3*c^3) / (5*b + c) + (a^3 + 3*b^3) / (5*a + b) + (c^3 + 3*a^3) / (5*c + a) ≥ 2 / 3 * (a^2 + b^2 + c^2) := by
-  exact @Lean92.MO_INT_20_P17.P17 a b c ha hb hc
-
-#print axioms P17
+  exact @P17' a b c ha hb hc

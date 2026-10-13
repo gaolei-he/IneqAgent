@@ -1,21 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P43
 
-theorem real_p43 (a b c : ℝ) (h : a^2 + b^2 + c^2 = 1) (h_domain : a * b * c ≠ 0) : 1 / a^2 + 1 / b^2 + 1 / c^2 - 2 * (a^3 + b^3 + c^3) / (a * b * c) ≥ 3 := by
+theorem real_p43' (a b c : ℝ) (h : a^2 + b^2 + c^2 = 1) (h_domain : a * b * c ≠ 0) : 1 / a^2 + 1 / b^2 + 1 / c^2 - 2 * (a^3 + b^3 + c^3) / (a * b * c) ≥ 3 := by
   have hnum : (0 : ℝ) ≤ -2*a^4*b*c - 3*a^2*b^2*c^2 + a^2*b^2 + a^2*c^2 - 2*a*b^4*c - 2*a*b*c^4 + b^2*c^2 := by
     have hbackend : (0 : ℝ) ≤ ((-1)*(2)*((a)^4)*(b)*(c)) + ((-1)*(3)*((a)^2)*((b)^2)*((c)^2)) + (((a)^2)*((b)^2)) + (((a)^2)*((c)^2)) + ((-1)*(2)*(a)*((b)^4)*(c)) + ((-1)*(2)*(a)*(b)*((c)^4)) + (((b)^2)*((c)^2)) := by
       have heh1 : (((a)^2) + ((b)^2) + ((c)^2) + (-1)) = (0 : ℝ) := by nlinarith
@@ -39,10 +29,7 @@ theorem real_p43 (a b c : ℝ) (h : a^2 + b^2 + c^2 = 1) (h_domain : a * b * c �
     exact div_nonneg hnum (le_of_lt hden)
   convert hgoal using 1 <;> field_simp <;> ring
 
-end Lean92.IneqComp_real_P43
 
 
 theorem real_p43 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a^2 + b^2 + c^2 = 1) : 1 / a^2 + 1 / b^2 + 1 / c^2 - 2 * (a^3 + b^3 + c^3) / (a * b * c) ≥ 3 := by
-  exact @Lean92.IneqComp_real_P43.real_p43 a b c h (by positivity)
-
-#print axioms real_p43
+  exact @real_p43' a b c h (by positivity)

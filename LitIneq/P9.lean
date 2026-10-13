@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_09
 
 theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (-100 : ℝ) ≤ x1) (hu0 : x1 ≤ (100 : ℝ)) (hl1 : (-100 : ℝ) ≤ x2) (hu1 : x2 ≤ (100 : ℝ)) (hl2 : (-100 : ℝ) ≤ x3) (hu2 : x3 ≤ (100 : ℝ)) (hl3 : (-100 : ℝ) ≤ x4) (hu3 : x4 ≤ (100 : ℝ)) (hl4 : (-100 : ℝ) ≤ x5) (hu4 : x5 ≤ (100 : ℝ)) (hl5 : (-100 : ℝ) ≤ x6) (hu5 : x6 ≤ (100 : ℝ)) : (0 : ℝ) ≤ -34/5*x1*x4 - 16/5*x1*x5 + 13/10*x1*x6 + 51/10*x1 - 24/5*x2*x5 - 7/10*x2*x6 - 71/10*x2 - 19/10*x3*x4 - 7/10*x3*x5 + 9*x3*x6 - x3 + 51/10*x4 - 71/10*x5 - x6 + 270400 := by
   let t0 : ℝ := (x1 - (-100)) / (200)
@@ -51,7 +42,6 @@ theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (-100 : ℝ) ≤ x1) (hu0 : x1 �
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_09
 
 
 set_option linter.style.header false
@@ -62,13 +52,8 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 9
 name: C10
-source_status: confirmed_from_appirl_citation_and_code
-basis: 454
-paper_title: A general solver based on sparse resultants: Numerical issues and kinematic applications
-source_evidence: /home/ljh/APPIRL/proof/Example.py:96-102; /tmp/2503.06592v1.layout.txt:521-535; /tmp/2503.06592v1.layout.txt:537; /tmp/2503.06592v1.layout.txt:761-763
+reference: A general solver based on sparse resultants: Numerical issues and kinematic applications
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_09_c10 :
     ∀ x1 x2 x3 x4 x5 x6 : ℝ,
@@ -86,9 +71,7 @@ theorem box_benchmark_09_c10 :
       x6 <= 100 →
         0 <= (-34 / 5 : ℝ)*x1*x4 - (16 / 5 : ℝ)*x1*x5 + (13 / 10 : ℝ)*x1*x6 + (51 / 10 : ℝ)*x1 - (24 / 5 : ℝ)*x2*x5 - (7 / 10 : ℝ)*x2*x6 - (71 / 10 : ℝ)*x2 - (19 / 10 : ℝ)*x3*x4 - (7 / 10 : ℝ)*x3*x5 + 9*x3*x6 - x3 + (51 / 10 : ℝ)*x4 - (71 / 10 : ℝ)*x5 - x6 + 270400 := by
   intro x1 x2 x3 x4 x5 x6 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_09.result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_09_c10

@@ -1,21 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P49
 
-theorem real_p49 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : 1 + 6 / (a * b + a * c + a * d + b * c + b * d + c * d) ≥ 8 / (a + b + c + d) := by
+theorem real_p49' (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : 1 + 6 / (a * b + a * c + a * d + b * c + b * d + c * d) ≥ 8 / (a + b + c + d) := by
   have hnum : (0 : ℝ) ≤ a^2*b + a^2*c + a^2*d + a*b^2 + 3*a*b*c + 3*a*b*d - 8*a*b + a*c^2 + 3*a*c*d - 8*a*c + a*d^2 - 8*a*d + 6*a + b^2*c + b^2*d + b*c^2 + 3*b*c*d - 8*b*c + b*d^2 - 8*b*d + 6*b + c^2*d + c*d^2 - 8*c*d + 6*c + 6*d := by
     have hbackend : (0 : ℝ) ≤ (((a)^2)*(b)) + (((a)^2)*(c)) + (((a)^2)*(d)) + ((a)*((b)^2)) + ((3)*(a)*(b)*(c)) + ((3)*(a)*(b)*(d)) + ((-1)*(8)*(a)*(b)) + ((a)*((c)^2)) + ((3)*(a)*(c)*(d)) + ((-1)*(8)*(a)*(c)) + ((a)*((d)^2)) + ((-1)*(8)*(a)*(d)) + ((6)*(a)) + (((b)^2)*(c)) + (((b)^2)*(d)) + ((b)*((c)^2)) + ((3)*(b)*(c)*(d)) + ((-1)*(8)*(b)*(c)) + ((b)*((d)^2)) + ((-1)*(8)*(b)*(d)) + ((6)*(b)) + (((c)^2)*(d)) + ((c)*((d)^2)) + ((-1)*(8)*(c)*(d)) + ((6)*(c)) + ((6)*(d)) := by
       have hgg1 : (0 : ℝ) ≤ a := by first | positivity | nlinarith
@@ -56,10 +46,7 @@ theorem real_p49 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d 
     exact div_nonneg hnum (le_of_lt hden)
   convert hgoal using 1 <;> field_simp <;> ring
 
-end Lean92.IneqComp_real_P49
 
 
 theorem real_p49 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : 1 + 6 / (a * b + a * c + a * d + b * c + b * d + c * d) ≥ 8 / (a + b + c + d) := by
-  exact @Lean92.IneqComp_real_P49.real_p49 a b c d ha hb hc hd
-
-#print axioms real_p49
+  exact @real_p49' a b c d ha hb hc hd

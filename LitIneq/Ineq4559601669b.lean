@@ -150,5 +150,3 @@ theorem ineq4559601669b :
   have hg : (0 : ℝ) ≤ (x1^2 - x1*x2 - x1*x3 + 2*x1*x4 - x1*x5 - x1*x6 + x2*x3 - x2*x5 - x3*x6 + x5*x6 - 1/1000000) := by rw [hid]; exact hb
   unfold deltaX4
   nlinarith only [hg]
-
-#print axioms ineq4559601669b

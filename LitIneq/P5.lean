@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_05
 
 theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ)) (hl1 : (-5 : ℝ) ≤ x2) (hu1 : x2 ≤ (5 : ℝ)) (hl2 : (-5 : ℝ) ≤ x3) (hu2 : x3 ≤ (5 : ℝ)) : (0 : ℝ) ≤ -x1 + 417817267/500000000*x2^2 + 582182733/500000000*x2 - x3 + 4726057557/250000000 := by
   have hcert : (0 : ℝ) ≤ ((-1)*(x1)) + ((417817267/500000000)*((x2)^2)) + ((582182733/500000000)*(x2)) + ((-1)*(x3)) + (4726057557/250000000) := by
@@ -40,7 +31,6 @@ theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_05
 
 
 set_option linter.style.header false
@@ -51,13 +41,8 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 5
 name: C3
-source_status: confirmed_from_appirl_citation_and_code
-basis: 83
-paper_title: Personal communication at the occasion of the AMS-SIAM summer seminar in applied mathematics
-source_evidence: /home/ljh/APPIRL/proof/Example.py:45-49; /tmp/2503.06592v1.layout.txt:521-528; /tmp/2503.06592v1.layout.txt:537; /tmp/2503.06592v1.layout.txt:743-744
+reference: Personal communication at the occasion of the AMS-SIAM summer seminar in applied mathematics
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_05_c3 :
     ∀ x1 x2 x3 : ℝ,
@@ -69,9 +54,7 @@ theorem box_benchmark_05_c3 :
       x3 <= 5 →
         0 <= -x1 + (417817267 / 500000000 : ℝ)*x2^2 + (582182733 / 500000000 : ℝ)*x2 - x3 + (4726057557 / 250000000 : ℝ) := by
   intro x1 x2 x3 ⟨hl0, hu0, hl1, hu1, hl2, hu2⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_05.result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_05_c3

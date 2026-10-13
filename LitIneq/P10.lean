@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_10
 
 theorem result (x1 x2 x3 : ℝ) (hl0 : (-10 : ℝ) ≤ x1) (hu0 : x1 ≤ (10 : ℝ)) (hl1 : (-10 : ℝ) ≤ x2) (hu1 : x2 ≤ (10 : ℝ)) (hl2 : (-10 : ℝ) ≤ x3) (hu2 : x3 ≤ (10 : ℝ)) : (0 : ℝ) ≤ 2*x1^2 - 2*x1*x2^2 - 2*x1*x3^2 + x2^4 + x2^2 - 2*x2 + x3^4 + x3^2 - 2*x3 + 100000000029403/50000000000000 := by
   have hcert : (0 : ℝ) ≤ ((2)*((x1)^2)) + ((-1)*(2)*(x1)*((x2)^2)) + ((-1)*(2)*(x1)*((x3)^2)) + ((x2)^4) + ((x2)^2) + ((-1)*(2)*(x2)) + ((x3)^4) + ((x3)^2) + ((-1)*(2)*(x3)) + (100000000029403/50000000000000) := by
@@ -40,7 +31,6 @@ theorem result (x1 x2 x3 : ℝ) (hl0 : (-10 : ℝ) ≤ x1) (hu0 : x1 ≤ (10 : �
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_10
 
 
 set_option linter.style.header false
@@ -51,14 +41,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 10
 name: Schwefel
-source_status: confirmed_transformed
-basis: 461
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt:2316-2317,2347; paper_examples_extract/FormalVerifier.txt:297
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_10_schwefel :
     ∀ x1 x2 x3 : ℝ,
@@ -70,9 +55,7 @@ theorem box_benchmark_10_schwefel :
       x3 <= 10 →
         0 <= 2*x1^2 - 2*x1*x2^2 - 2*x1*x3^2 + x2^4 + x2^2 - 2*x2 + x3^4 + x3^2 - 2*x3 + (100000000029403 / 50000000000000 : ℝ) := by
   intro x1 x2 x3 ⟨hl0, hu0, hl1, hu1, hl2, hu2⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_10.result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_10_schwefel

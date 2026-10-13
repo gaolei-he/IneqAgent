@@ -11,14 +11,13 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 24
 id: A04
 name: Cap 4
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: -x1*x3^3 + 4*x2*x3^2*x4 + 4*x1*x3*x4^2 + 2*x2*x4^3 + 4*x1*x3 + 4*x3^2 - 10*x2*x4 - 10*x4^2 + 2 + 31800966258/10000000000
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 4; Appendix A Problem 4
+source_location: Table 1 Ex 4; Appendix A Problem 4
 
 The polynomial and constraints preserve the source expression and order.
-The theorem constant uses the z3_adjustment above for an exact inequality.
+The constant is adjusted from original_f, as recorded in the benchmark catalog.
 -/
 set_option maxHeartbeats 4000000 in
 lemma cap4_cubic (u : ℝ) (hu : 0 ≤ u) :

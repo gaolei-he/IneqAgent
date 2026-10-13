@@ -1,19 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P50
 
 private theorem four_fractions (a b c d p q r s : ℝ)
     (hp : p ≠ 0) (hq : q ≠ 0) (hr : r ≠ 0) (hs : s ≠ 0) :
@@ -184,7 +174,7 @@ private theorem private_hDS_class_6 : ∀ x1 x2 x3 x4 : ℝ, 0 ≤ x1 → 0 ≤ 
     convert hleaf using 1 <;> ring
   positivity
 
-theorem real_p50 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b * c * d = 1) : 1 / (5 * a^2 - 2 * a + 1) + 1 / (5 * b^2 - 2 * b + 1) + 1 / (5 * c^2 - 2 * c + 1) + 1 / (5 * d^2 - 2 * d + 1) ≥ 1 := by
+theorem real_p50' (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b * c * d = 1) : 1 / (5 * a^2 - 2 * a + 1) + 1 / (5 * b^2 - 2 * b + 1) + 1 / (5 * c^2 - 2 * c + 1) + 1 / (5 * d^2 - 2 * d + 1) ≥ 1 := by
   let x1 : ℝ := a*b*c
   let x2 : ℝ := b*c
   let x3 : ℝ := c
@@ -585,10 +575,7 @@ theorem real_p50 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d 
               have hcert := hDS_class_1 x1 x2 x3 x4 (by positivity) (by positivity) (by positivity) (by positivity) hs
               convert hcert using 1 <;> ring
 
-end Lean92.IneqComp_real_P50
 
 
 theorem real_p50 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b * c * d = 1) : 1 / (5 * a^2 - 2 * a + 1) + 1 / (5 * b^2 - 2 * b + 1) + 1 / (5 * c^2 - 2 * c + 1) + 1 / (5 * d^2 - 2 * d + 1) ≥ 1 := by
-  exact @Lean92.IneqComp_real_P50.real_p50 a b c d ha hb hc hd h
-
-#print axioms real_p50
+  exact @real_p50' a b c d ha hb hc hd h

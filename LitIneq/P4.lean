@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_04
 
 theorem result (x1 x2 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) (hl1 : (-1 : ℝ) ≤ x2) (hu1 : x2 ≤ (1 : ℝ)) : (0 : ℝ) ≤ x1^2 + 4*x2^2 + 167/100 := by
   have hcert : (0 : ℝ) ≤ ((x1)^2) + ((4)*((x2)^2)) + (167/100) := by
@@ -34,7 +25,6 @@ theorem result (x1 x2 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) 
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_04
 
 
 set_option linter.style.header false
@@ -45,13 +35,8 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 4
 name: C2
-source_status: confirmed_from_appirl_citation_and_code
-basis: 34
-paper_title: Polynomial homotopy continuation: A portable Ada software package
-source_evidence: /home/ljh/APPIRL/proof/Example.py:38-42; /tmp/2503.06592v1.layout.txt:521-527; /tmp/2503.06592v1.layout.txt:537; /tmp/2503.06592v1.layout.txt:740-742
+reference: Polynomial homotopy continuation: A portable Ada software package
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_04_c2 :
     ∀ x1 x2 : ℝ,
@@ -61,9 +46,7 @@ theorem box_benchmark_04_c2 :
       x2 <= 1 →
         0 <= x1^2 + 4*x2^2 + (167 / 100 : ℝ) := by
   intro x1 x2 ⟨hl0, hu0, hl1, hu1⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_04.result x1 x2 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_04_c2

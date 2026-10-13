@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_15
 
 theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-1/2 : ℝ) ≤ x1) (hu0 : x1 ≤ (1/2 : ℝ)) (hl1 : (-1/2 : ℝ) ≤ x2) (hu1 : x2 ≤ (1/2 : ℝ)) (hl2 : (-1/2 : ℝ) ≤ x3) (hu2 : x3 ≤ (1/2 : ℝ)) (hl3 : (-1/2 : ℝ) ≤ x4) (hu3 : x4 ≤ (1/2 : ℝ)) : (0 : ℝ) ≤ -x1*x3^3 + 4*x1*x3*x4^2 + 4*x1*x3 + 4*x2*x3^2*x4 + 2*x2*x4^3 - 10*x2*x4 + 4*x3^2 - 10*x4^2 + 51801/10000 := by
   let t0 : ℝ := (x1 - (-1/2)) / (1)
@@ -41,7 +32,6 @@ theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-1/2 : ℝ) ≤ x1) (hu0 : x1 ≤ (1/
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_15
 
 
 set_option linter.style.header false
@@ -52,14 +42,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 15
 name: Caprasse's System
-source_status: confirmed_transformed
-basis: 1286
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt:2324-2327,2349; paper_examples_extract/FormalVerifier.txt:309
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_15_caprasse_s_system :
     ∀ x1 x2 x3 x4 : ℝ,
@@ -73,9 +58,7 @@ theorem box_benchmark_15_caprasse_s_system :
       x4 <= (1 / 2 : ℝ) →
         0 <= -x1*x3^3 + 4*x1*x3*x4^2 + 4*x1*x3 + 4*x2*x3^2*x4 + 2*x2*x4^3 - 10*x2*x4 + 4*x3^2 - 10*x4^2 + (51801 / 10000 : ℝ) := by
   intro x1 x2 x3 x4 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_15.result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_15_caprasse_s_system

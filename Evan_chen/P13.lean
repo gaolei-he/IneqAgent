@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P13
 
-theorem P13 {a b c d : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) (h : a * b * c * d = 1) : a + b + c + d ≤ a ^ 4 * b + b ^ 4 * c + c ^ 4 * d + d ^ 4 * a := by
+theorem P13' {a b c d : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) (h : a * b * c * d = 1) : a + b + c + d ≤ a ^ 4 * b + b ^ 4 * c + c ^ 4 * d + d ^ 4 * a := by
   rw [← sub_nonneg]
   field_simp
   ring_nf
@@ -511,10 +502,7 @@ theorem P13 {a b c d : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d
               have hcert := hDS_class_1 a b c d (by positivity) (by positivity) (by positivity) (by positivity) hs
               convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P13
 
 
 theorem P13 {a b c d : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) (h : a * b * c * d = 1) : a + b + c + d ≤ a ^ 4 * b + b ^ 4 * c + c ^ 4 * d + d ^ 4 * a := by
-  exact @Lean92.Evan_chen_P13.P13 a b c d ha hb hc hd h
-
-#print axioms P13
+  exact @P13' a b c d ha hb hc hd h

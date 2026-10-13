@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_37
 
 theorem result (x1 x2 x3 x4 x5 x6 x7 x8 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) (hl1 : (-1 : ℝ) ≤ x2) (hu1 : x2 ≤ (1 : ℝ)) (hl2 : (-1 : ℝ) ≤ x3) (hu2 : x3 ≤ (1 : ℝ)) (hl3 : (-1 : ℝ) ≤ x4) (hu3 : x4 ≤ (1 : ℝ)) (hl4 : (-1 : ℝ) ≤ x5) (hu4 : x5 ≤ (1 : ℝ)) (hl5 : (-1 : ℝ) ≤ x6) (hu5 : x6 ≤ (1 : ℝ)) (hl6 : (-1 : ℝ) ≤ x7) (hu6 : x7 ≤ (1 : ℝ)) (hl7 : (-1 : ℝ) ≤ x8) (hu7 : x8 ≤ (1 : ℝ)) : (0 : ℝ) ≤ 29 - 1*x7 + 8*x7^2 - 6*x6*x8 - 2*x1*x4 - 2*x2*x5 - 2*x3*x6 + 2*x1*x7 + 2*x2*x7 + 2*x3*x7 + 2*x4*x7 + 2*x5*x7 + 6*x7*x8 + 8*x6*x7 := by
   let t0 : ℝ := (x1 - (-1)) / (2)
@@ -61,7 +52,6 @@ theorem result (x1 x2 x3 x4 x5 x6 x7 x8 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : 
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_37
 
 
 set_option linter.style.header false
@@ -73,14 +63,11 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 37
 id: A17
 name: Viras 8
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: -2*x1*x4 + 2*x1*x7 - 2*x2*x5 + 2*x2*x7 - 2*x3*x6 + 2*x3*x7 + 2*x4*x7 + 2*x5*x7 + 8*x6*x7 - 6*x6*x8 + 8*x7^2 + 6*x7*x8 - x7 + 29
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 17; Appendix A Problem 17
+source_location: Table 1 Ex 17; Appendix A Problem 17
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_37_a17_viras_8 :
     ∀ x1 x2 x3 x4 x5 x6 x7 x8 : ℝ,
@@ -102,9 +89,7 @@ theorem box_benchmark_37_a17_viras_8 :
       x8 <= 1 →
         0 <= 29 - 1*x7 + 8*x7^2 - 6*x6*x8 - 2*x1*x4 - 2*x2*x5 - 2*x3*x6 + 2*x1*x7 + 2*x2*x7 + 2*x3*x7 + 2*x4*x7 + 2*x5*x7 + 6*x7*x8 + 8*x6*x7 := by
   intro x1 x2 x3 x4 x5 x6 x7 x8 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5, hl6, hu6, hl7, hu7⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_37.result x1 x2 x3 x4 x5 x6 x7 x8 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num) (by convert hl6 using 1 <;> norm_num) (by convert hu6 using 1 <;> norm_num) (by convert hl7 using 1 <;> norm_num) (by convert hu7 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 x6 x7 x8 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num) (by convert hl6 using 1 <;> norm_num) (by convert hu6 using 1 <;> norm_num) (by convert hl7 using 1 <;> norm_num) (by convert hu7 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_37_a17_viras_8

@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P31
 
-theorem P31 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) : (3 / 2) * (a ^ 2 + b ^ 2 + c ^ 2) ≤ (a ^ 3 + 5 * b ^ 3) / (3 * a + b) + (b ^ 3 + 5 * c ^ 3) / (3 * b + c) + (c ^ 3 + 5 * a ^ 3) / (3 * c + a) := by
+theorem P31' {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) : (3 / 2) * (a ^ 2 + b ^ 2 + c ^ 2) ≤ (a ^ 3 + 5 * b ^ 3) / (3 * a + b) + (b ^ 3 + 5 * c ^ 3) / (3 * b + c) + (c ^ 3 + 5 * a ^ 3) / (3 * c + a) := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < 3*a + b := by
     first
@@ -135,10 +126,7 @@ theorem P31 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) : (3 / 2) * (a 
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P31
 
 
 theorem P31 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) : (3 / 2) * (a ^ 2 + b ^ 2 + c ^ 2) ≤ (a ^ 3 + 5 * b ^ 3) / (3 * a + b) + (b ^ 3 + 5 * c ^ 3) / (3 * b + c) + (c ^ 3 + 5 * a ^ 3) / (3 * c + a) := by
-  exact @Lean92.Evan_chen_P31.P31 a b c ha hb hc
-
-#print axioms P31
+  exact @P31' a b c ha hb hc

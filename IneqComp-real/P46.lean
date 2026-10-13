@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P46
 
-theorem real_p46 (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x + y + z = 1) : y * z + z * x + x * y - 2 * x * y * z ≤ 7 / 27 := by
+theorem real_p46' (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x + y + z = 1) : y * z + z * x + x * y - 2 * x * y * z ≤ 7 / 27 := by
   rw [← sub_nonneg]
   field_simp [hx.ne.symm, hy.ne.symm, hz.ne.symm]
   ring_nf
@@ -110,11 +101,8 @@ theorem real_p46 (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x + y
         have hcert := hDS_class_1 x y z (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.IneqComp_real_P46
 
 open Real
 
 theorem real_p46 (x y z : ℝ) (hx : x > 0) (hy : y > 0) (hz : z > 0) (h : x + y + z = 1) : y * z + z * x + x * y - 2 * x * y * z ≤ 7 / 27 := by
-  exact @Lean92.IneqComp_real_P46.real_p46 x y z hx hy hz h
-
-#print axioms real_p46
+  exact @real_p46' x y z hx hy hz h

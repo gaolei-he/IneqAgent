@@ -254,5 +254,3 @@ theorem ineqTSKAJXY_TADIAMB :
   have hg : (0 : ℝ) ≤ (-x1^2*x4^2 + 8*x1^2*x4 + 2*x1*x2*x4*x5 - 8*x1*x2*x4 - 8*x1*x2*x5 + 8*x1*x2*x6 + 2*x1*x3*x4*x6 - 8*x1*x3*x4 + 8*x1*x3*x5 - 8*x1*x3*x6 + 8*x1*x4^2 - 8*x1*x4*x5 - 8*x1*x4*x6 - x2^2*x5^2 + 8*x2^2*x5 + 8*x2*x3*x4 + 2*x2*x3*x5*x6 - 8*x2*x3*x5 - 8*x2*x3*x6 - 8*x2*x4*x5 + 8*x2*x5^2 - 8*x2*x5*x6 - x3^2*x6^2 + 8*x3^2*x6 - 8*x3*x4*x6 - 8*x3*x5*x6 + 8*x3*x6^2 + 8*x4*x5*x6 - 1/1000000) := by rw [hid]; exact hb
   unfold deltaX rhoX
   nlinarith only [hg]
-
-#print axioms ineqTSKAJXY_TADIAMB

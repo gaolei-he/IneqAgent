@@ -1,19 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_35
 
 private theorem affine_nonneg (a b t : ℝ) (hl : -1 ≤ t) (hu : t ≤ 1)
     (hm : 0 ≤ a-b) (hp : 0 ≤ a+b) : 0 ≤ a+b*t := by
@@ -1425,7 +1415,6 @@ private theorem vertex_254 (x1 x2 x3 x4 x5 x6 x7 : ℝ) (hl_x1 : -1 ≤ x1) (hu_
 theorem result (x1 x2 x3 x4 x5 x6 x7 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) (hl1 : (-1 : ℝ) ≤ x2) (hu1 : x2 ≤ (1 : ℝ)) (hl2 : (-1 : ℝ) ≤ x3) (hu2 : x3 ≤ (1 : ℝ)) (hl3 : (-1 : ℝ) ≤ x4) (hu3 : x4 ≤ (1 : ℝ)) (hl4 : (-1 : ℝ) ≤ x5) (hu4 : x5 ≤ (1 : ℝ)) (hl5 : (-1 : ℝ) ≤ x6) (hu5 : x6 ≤ (1 : ℝ)) (hl6 : (-1 : ℝ) ≤ x7) (hu6 : x7 ≤ (1 : ℝ)) : (0 : ℝ) ≤ 5 + x1*x2*x3*x4*x5*x6 + x1*x2*x3*x4*x5*x7 + x1*x2*x3*x4*x6*x7 + x1*x2*x3*x5*x6*x7 + x1*x2*x4*x5*x6*x7 + x1*x3*x4*x5*x6*x7 + x2*x3*x4*x5*x6*x7 := by
   convert vertex_254 x1 x2 x3 x4 x5 x6 x7 hl0 hu0 hl1 hu1 hl2 hu2 hl3 hu3 hl4 hu4 hl5 hu5 hl6 hu6 using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_35
 
 
 set_option linter.style.header false
@@ -1437,14 +1426,11 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 35
 id: A15
 name: Cyc 7
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: x1*x2*x3*x4*x5*x6 + x2*x3*x4*x5*x6*x7 + x1*x3*x4*x5*x6*x7 + x1*x2*x4*x5*x6*x7 + x1*x2*x3*x5*x6*x7 + x1*x2*x3*x4*x6*x7 + x1*x2*x3*x4*x5*x7 + 5
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 15; Appendix A Problem 15
+source_location: Table 1 Ex 15; Appendix A Problem 15
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_35_a15_cyc_7 :
     ∀ x1 x2 x3 x4 x5 x6 x7 : ℝ,
@@ -1464,9 +1450,7 @@ theorem box_benchmark_35_a15_cyc_7 :
       x7 <= 1 →
         0 <= 5 + x1*x2*x3*x4*x5*x6 + x1*x2*x3*x4*x5*x7 + x1*x2*x3*x4*x6*x7 + x1*x2*x3*x5*x6*x7 + x1*x2*x4*x5*x6*x7 + x1*x3*x4*x5*x6*x7 + x2*x3*x4*x5*x6*x7 := by
   intro x1 x2 x3 x4 x5 x6 x7 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5, hl6, hu6⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_35.result x1 x2 x3 x4 x5 x6 x7 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num) (by convert hl6 using 1 <;> norm_num) (by convert hu6 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 x6 x7 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num) (by convert hl6 using 1 <;> norm_num) (by convert hu6 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_35_a15_cyc_7

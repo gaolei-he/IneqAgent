@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_12
 
 theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : ℝ)) (hl1 : (-2 : ℝ) ≤ x2) (hu1 : x2 ≤ (2 : ℝ)) (hl2 : (-2 : ℝ) ≤ x3) (hu2 : x3 ≤ (2 : ℝ)) (hl3 : (-2 : ℝ) ≤ x4) (hu3 : x4 ≤ (2 : ℝ)) : (0 : ℝ) ≤ x1*x2^2 + x1*x3^2 + x1*x4^2 - 11/10*x1 + 21801/1000 := by
   let t0 : ℝ := (x1 - (-2)) / (4)
@@ -41,7 +32,6 @@ theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : 
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_12
 
 
 set_option linter.style.header false
@@ -52,14 +42,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 12
 name: Adaptive Lotka-Volterra System
-source_status: confirmed_transformed
-basis: 494
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt:2329-2331,2350; paper_examples_extract/FormalVerifier.txt:314
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_12_adaptive_lotka_volterra_system :
     ∀ x1 x2 x3 x4 : ℝ,
@@ -73,9 +58,7 @@ theorem box_benchmark_12_adaptive_lotka_volterra_system :
       x4 <= 2 →
         0 <= x1*x2^2 + x1*x3^2 + x1*x4^2 - (11 / 10 : ℝ)*x1 + (21801 / 1000 : ℝ) := by
   intro x1 x2 x3 x4 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_12.result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_12_adaptive_lotka_volterra_system

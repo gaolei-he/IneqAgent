@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_22
 
 theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ)) (hl1 : (-5 : ℝ) ≤ x2) (hu1 : x2 ≤ (5 : ℝ)) (hl2 : (-5 : ℝ) ≤ x3) (hu2 : x3 ≤ (5 : ℝ)) : (0 : ℝ) ≤ 917817267/25000000 + x1 + x3 - 582182733/500000000*x2 - 417817267/500000000*x2^2 := by
   let t0 : ℝ := (x1 - (-5)) / (10)
@@ -36,7 +27,6 @@ theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_22
 
 
 set_option linter.style.header false
@@ -48,14 +38,11 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 22
 id: A02
 name: R.D. 3
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: x1 - 2*x2 + x3 + 835634534/1000000000*x2*(1-x2) + 3671269068/100000000
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 2; Appendix A Problem 2
+source_location: Table 1 Ex 2; Appendix A Problem 2
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_22_a02_r_d_3 :
     ∀ x1 x2 x3 : ℝ,
@@ -67,9 +54,7 @@ theorem box_benchmark_22_a02_r_d_3 :
       x3 <= 5 →
         0 <= (917817267 / 25000000 : ℝ) + x1 + x3 - (582182733 / 500000000 : ℝ)*x2 - (417817267 / 500000000 : ℝ)*x2^2 := by
   intro x1 x2 x3 ⟨hl0, hu0, hl1, hu1, hl2, hu2⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_22.result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_22_a02_r_d_3

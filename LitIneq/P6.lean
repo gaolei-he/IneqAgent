@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_06
 
 theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ)) (hl1 : (-5 : ℝ) ≤ x2) (hu1 : x2 ≤ (5 : ℝ)) (hl2 : (-5 : ℝ) ≤ x3) (hu2 : x3 ≤ (5 : ℝ)) : (0 : ℝ) ≤ -x1 - 417817267/500000000*x2^2 + 582182733/500000000*x2 - x3 + 367126907/10000000 := by
   let t0 : ℝ := (x1 - (-5)) / (10)
@@ -36,7 +27,6 @@ theorem result (x1 x2 x3 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_06
 
 
 set_option linter.style.header false
@@ -47,14 +37,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 6
 name: 3-Variable Reaction Diffusion
-source_status: confirmed_transformed
-basis: 83
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt:2320-2321,2348; paper_examples_extract/FormalVerifier.txt:304
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_06_3_variable_reaction_diffusion :
     ∀ x1 x2 x3 : ℝ,
@@ -66,9 +51,7 @@ theorem box_benchmark_06_3_variable_reaction_diffusion :
       x3 <= 5 →
         0 <= -x1 - (417817267 / 500000000 : ℝ)*x2^2 + (582182733 / 500000000 : ℝ)*x2 - x3 + (367126907 / 10000000 : ℝ) := by
   intro x1 x2 x3 ⟨hl0, hu0, hl1, hu1, hl2, hu2⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_06.result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_06_3_variable_reaction_diffusion

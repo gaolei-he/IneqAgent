@@ -14,7 +14,6 @@ def sectionMatrixRat : Matrix SectionIndex SectionIndex ℚ := fun row column =>
   (sectionNumerator row column : ℚ) / (commonDenominator : ℚ)
 
 -- Delay finite sums until the selected last-row/last-column case is evaluated.
--- This retains the same matrix entries while avoiding eager discarded sums.
 def liftedSectionRat : Matrix FullIndex FullIndex ℚ :=
   fun row => Fin.lastCases
     (fun column => Fin.lastCases

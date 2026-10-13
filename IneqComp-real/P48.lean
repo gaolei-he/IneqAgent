@@ -1,21 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P48
 
-theorem real_p48 (a b : ℝ) (ha : a > 0) (hb : b > 0) : (a + 1)^2 / b + (b + 3)^2 / a ≥ 16 := by
+theorem real_p48' (a b : ℝ) (ha : a > 0) (hb : b > 0) : (a + 1)^2 / b + (b + 3)^2 / a ≥ 16 := by
   have hnum : (0 : ℝ) ≤ a^3 + 2*a^2 - 16*a*b + a + b^3 + 6*b^2 + 9*b := by
     have hbackend : (0 : ℝ) ≤ ((a)^3) + ((2)*((a)^2)) + ((-1)*(16)*(a)*(b)) + (a) + ((b)^3) + ((6)*((b)^2)) + ((9)*(b)) := by
       have hgg1 : (0 : ℝ) ≤ a := by first | positivity | nlinarith
@@ -50,10 +40,7 @@ theorem real_p48 (a b : ℝ) (ha : a > 0) (hb : b > 0) : (a + 1)^2 / b + (b + 3)
     exact div_nonneg hnum (le_of_lt hden)
   convert hgoal using 1 <;> field_simp <;> ring
 
-end Lean92.IneqComp_real_P48
 
 
 theorem real_p48 (a b : ℝ) (ha : a > 0) (hb : b > 0) : (a + 1)^2 / b + (b + 3)^2 / a ≥ 16 := by
-  exact @Lean92.IneqComp_real_P48.real_p48 a b ha hb
-
-#print axioms real_p48
+  exact @real_p48' a b ha hb

@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_42
 
 theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : ℝ)) (hl1 : (-2 : ℝ) ≤ x2) (hu1 : x2 ≤ (2 : ℝ)) (hl2 : (-2 : ℝ) ≤ x3) (hu2 : x3 ≤ (2 : ℝ)) (hl3 : (-2 : ℝ) ≤ x4) (hu3 : x4 ≤ (2 : ℝ)) : (0 : ℝ) ≤ x1^2 + x1^4 + x2^2 + x2^4 + x3^2 + x3^4 + x4^2 + x4^4 - 2*x1*x4^2 - 2*x2*x1^2 - 2*x3*x2^2 - 2*x4*x3^2 := by
   have hcert : (0 : ℝ) ≤ ((x1)^4) + ((-1)*(2)*((x1)^2)*(x2)) + ((x1)^2) + ((-1)*(2)*(x1)*((x4)^2)) + ((x2)^4) + ((-1)*(2)*((x2)^2)*(x3)) + ((x2)^2) + ((x3)^4) + ((-1)*(2)*((x3)^2)*(x4)) + ((x3)^2) + ((x4)^4) + ((x4)^2) := by
@@ -46,7 +37,6 @@ theorem result (x1 x2 x3 x4 : ℝ) (hl0 : (-2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : 
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_42
 
 
 set_option linter.style.header false
@@ -58,14 +48,11 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 42
 id: B04
 name: Extended Kearfott n=4
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: (x1^2-x2)^2 + (x2^2-x3)^2 + (x3^2-x4)^2 + (x4^2-x1)^2
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Appendix B Problem 4
+source_location: Appendix B Problem 4
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_42_b04_extended_kearfott_n_4 :
     ∀ x1 x2 x3 x4 : ℝ,
@@ -79,9 +66,7 @@ theorem box_benchmark_42_b04_extended_kearfott_n_4 :
       x4 <= 2 →
         0 <= x1^2 + x1^4 + x2^2 + x2^4 + x3^2 + x3^4 + x4^2 + x4^4 - 2*x1*x4^2 - 2*x2*x1^2 - 2*x3*x2^2 - 2*x4*x3^2 := by
   intro x1 x2 x3 x4 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_42.result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_42_b04_extended_kearfott_n_4

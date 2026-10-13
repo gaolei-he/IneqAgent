@@ -1,19 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P2
 
 private theorem private_hDS_class_1 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a ≤ b ∧ b ≤ c ∧ c ≤ d → 0 ≤ a^3*c + a^3*d + a^2*b^2 - a^2*b*d - 2*a^2*c^2 - a^2*c*d + a^2*d^2 + a*b^3 - a*b^2*c - a*b^2*d - a*b*c^2 + a*c^3 - a*c*d^2 + b^3*d + b^2*c^2 - 2*b^2*d^2 + b*c^3 - b*c^2*d - b*c*d^2 + b*d^3 + c^2*d^2 + c*d^3 := by
   intro a b c d h_a_nonneg_base h_b_nonneg_base h_c_nonneg_base h_d_nonneg_base hsort
@@ -772,7 +762,7 @@ private theorem private_hDS_class_6 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b →
     convert hleaf using 1 <;> ring
   positivity
 
-theorem real_p2 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : a / (b + c) + b / (c + d) + c / (d + a) + d / (a + b) ≥ 2 := by
+theorem real_p2' (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : a / (b + c) + b / (c + d) + c / (d + a) + d / (a + b) ≥ 2 := by
   rw [ge_iff_le]
   rw [← sub_nonneg]
   have hden1_pos : 0 < b + c := by
@@ -1137,10 +1127,7 @@ theorem real_p2 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d >
               have hcert := hDS_class_1 a b c d (by positivity) (by positivity) (by positivity) (by positivity) hs
               convert hcert using 1 <;> ring
 
-end Lean92.IneqComp_real_P2
 
 
 theorem real_p2 (a b c d : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) : a / (b + c) + b / (c + d) + c / (d + a) + d / (a + b) ≥ 2 := by
-  exact @Lean92.IneqComp_real_P2.real_p2 a b c d ha hb hc hd
-
-#print axioms real_p2
+  exact @real_p2' a b c d ha hb hc hd

@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_01
 
 theorem result (x1 : ℝ) (hl0 : (0 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) : (0 : ℝ) ≤ 4*x1^2 - 4*x1 + 1 := by
   have hcert : (0 : ℝ) ≤ ((4)*((x1)^2)) + ((-1)*(4)*(x1)) + (1) := by
@@ -28,7 +19,6 @@ theorem result (x1 : ℝ) (hl0 : (0 : ℝ) ≤ x1) (hu0 : x1 ≤ (1 : ℝ)) : (0
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_01
 
 
 set_option linter.style.header false
@@ -39,14 +29,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 1
 name: Bernstein coefficient example
-source_status: confirmed
-basis: 9
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt: title and Bernstein coefficient examples; paper_examples_extract/constrained_examples.json
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_01_bernstein_coefficient_example :
     ∀ x1 : ℝ,
@@ -54,9 +39,7 @@ theorem box_benchmark_01_bernstein_coefficient_example :
       x1 <= 1 →
         0 <= 4*x1^2 - 4*x1 + 1 := by
   intro x1 ⟨hl0, hu0⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_01.result x1 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num)
+  have htranslated := @result x1 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_01_bernstein_coefficient_example

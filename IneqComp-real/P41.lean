@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P41
 
-theorem real_p41 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 1 / (a^3 * (b + c)) + 1 / (b^3 * (c + a)) + 1 / (c^3 * (a + b)) ≥ 3 / 2 := by
+theorem real_p41' (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 1 / (a^3 * (b + c)) + 1 / (b^3 * (c + a)) + 1 / (c^3 * (a + b)) ≥ 3 / 2 := by
   let x1 : ℝ := a*b
   let x2 : ℝ := b
   let x3 : ℝ := 1
@@ -155,11 +146,8 @@ theorem real_p41 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b
         have hcert := hDS_class_1 x1 x2 x3 (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.IneqComp_real_P41
 
 open Finset
 
 theorem real_p41 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 1 / (a^3 * (b + c)) + 1 / (b^3 * (c + a)) + 1 / (c^3 * (a + b)) ≥ 3 / 2 := by
-  exact @Lean92.IneqComp_real_P41.real_p41 a b c ha hb hc h
-
-#print axioms real_p41
+  exact @real_p41' a b c ha hb hc h

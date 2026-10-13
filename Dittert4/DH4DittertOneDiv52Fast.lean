@@ -7,7 +7,6 @@ set_option maxRecDepth 1000000
 /-!
 # FastPoly proof of Theorem 1.2 and Theorem 1.1 for DH4
 
-This main file keeps the matrix notation and the final paper-style theorems.
 The exact SOS certificate is checked by the FastPoly verifier in `DH4OneDiv52FastPolyCertificate`.
 -/
 

@@ -7,7 +7,6 @@ set_option maxRecDepth 1000000
 /-!
 # Exact Gram-matrix proof of Theorem 1.2 and Theorem 1.1 for DH5
 
-This main file keeps the matrix notation and the final paper-style theorems.
 The exact strengthened SOS certificate is checked below using the 325 by 325
 Gram matrix and its exact class-coefficient audit.
 -/

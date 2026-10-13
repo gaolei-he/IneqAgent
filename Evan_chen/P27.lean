@@ -1,19 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P27
 
 private theorem private_hDS_class_1 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a ≤ b ∧ b ≤ c ∧ c ≤ d → 0 ≤ a^6*b^2*c^2/256 + a^6*b^2*d^2/256 + a^6*c^2*d^2/256 + a^5*b^3*c^2/64 + a^5*b^3*d^2/64 + a^5*b^2*c^3/64 + a^5*b^2*c^2*d/64 + a^5*b^2*c*d^2/64 + a^5*b^2*d^3/64 + a^5*b*c^2*d^2/64 + a^5*c^3*d^2/64 + a^5*c^2*d^3/64 + 3*a^4*b^4*c^2/128 + 3*a^4*b^4*d^2/128 + 3*a^4*b^3*c^3/64 + 3*a^4*b^3*c^2*d/64 + 3*a^4*b^3*c*d^2/64 + 3*a^4*b^3*d^3/64 + 3*a^4*b^2*c^4/128 + 3*a^4*b^2*c^3*d/64 - 237*a^4*b^2*c^2*d^2/256 + 3*a^4*b^2*c*d^3/64 + 3*a^4*b^2*d^4/128 + 3*a^4*b*c^3*d^2/64 + 3*a^4*b*c^2*d^3/64 + 3*a^4*c^4*d^2/128 + 3*a^4*c^3*d^3/64 + 3*a^4*c^2*d^4/128 + a^3*b^5*c^2/64 + a^3*b^5*d^2/64 + 3*a^3*b^4*c^3/64 + 3*a^3*b^4*c^2*d/64 + 3*a^3*b^4*c*d^2/64 + 3*a^3*b^4*d^3/64 + 3*a^3*b^3*c^4/64 + 3*a^3*b^3*c^3*d/32 + a^3*b^3*c^2*d^2/8 + 3*a^3*b^3*c*d^3/32 + 3*a^3*b^3*d^4/64 + a^3*b^2*c^5/64 + 3*a^3*b^2*c^4*d/64 + a^3*b^2*c^3*d^2/8 + a^3*b^2*c^2*d^3/8 + 3*a^3*b^2*c*d^4/64 + a^3*b^2*d^5/64 + 3*a^3*b*c^4*d^2/64 + 3*a^3*b*c^3*d^3/32 + 3*a^3*b*c^2*d^4/64 + a^3*c^5*d^2/64 + 3*a^3*c^4*d^3/64 + 3*a^3*c^3*d^4/64 + a^3*c^2*d^5/64 + a^2*b^6*c^2/256 + a^2*b^6*d^2/256 + a^2*b^5*c^3/64 + a^2*b^5*c^2*d/64 + a^2*b^5*c*d^2/64 + a^2*b^5*d^3/64 + 3*a^2*b^4*c^4/128 + 3*a^2*b^4*c^3*d/64 - 237*a^2*b^4*c^2*d^2/256 + 3*a^2*b^4*c*d^3/64 + 3*a^2*b^4*d^4/128 + a^2*b^3*c^5/64 + 3*a^2*b^3*c^4*d/64 + a^2*b^3*c^3*d^2/8 + a^2*b^3*c^2*d^3/8 + 3*a^2*b^3*c*d^4/64 + a^2*b^3*d^5/64 + a^2*b^2*c^6/256 + a^2*b^2*c^5*d/64 - 237*a^2*b^2*c^4*d^2/256 + a^2*b^2*c^3*d^3/8 - 237*a^2*b^2*c^2*d^4/256 + a^2*b^2*c*d^5/64 + a^2*b^2*d^6/256 + a^2*b*c^5*d^2/64 + 3*a^2*b*c^4*d^3/64 + 3*a^2*b*c^3*d^4/64 + a^2*b*c^2*d^5/64 + a^2*c^6*d^2/256 + a^2*c^5*d^3/64 + 3*a^2*c^4*d^4/128 + a^2*c^3*d^5/64 + a^2*c^2*d^6/256 + a*b^5*c^2*d^2/64 + 3*a*b^4*c^3*d^2/64 + 3*a*b^4*c^2*d^3/64 + 3*a*b^3*c^4*d^2/64 + 3*a*b^3*c^3*d^3/32 + 3*a*b^3*c^2*d^4/64 + a*b^2*c^5*d^2/64 + 3*a*b^2*c^4*d^3/64 + 3*a*b^2*c^3*d^4/64 + a*b^2*c^2*d^5/64 + b^6*c^2*d^2/256 + b^5*c^3*d^2/64 + b^5*c^2*d^3/64 + 3*b^4*c^4*d^2/128 + 3*b^4*c^3*d^3/64 + 3*b^4*c^2*d^4/128 + b^3*c^5*d^2/64 + 3*b^3*c^4*d^3/64 + 3*b^3*c^3*d^4/64 + b^3*c^2*d^5/64 + b^2*c^6*d^2/256 + b^2*c^5*d^3/64 + 3*b^2*c^4*d^4/128 + b^2*c^3*d^5/64 + b^2*c^2*d^6/256 := by
   intro a b c d h_a_nonneg_base h_b_nonneg_base h_c_nonneg_base h_d_nonneg_base hsort
@@ -42,7 +32,7 @@ private theorem private_hDS_class_1 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b →
     convert hleaf using 1 <;> ring
   positivity
 
-theorem P27 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a + b + c + d = 4) : (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ 1 / a ^ 2 + 1 / b ^ 2 + 1 / c ^ 2 + 1 / d ^ 2) := by
+theorem P27' {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a + b + c + d = 4) : (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ 1 / a ^ 2 + 1 / b ^ 2 + 1 / c ^ 2 + 1 / d ^ 2) := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < a := by
     first
@@ -411,10 +401,7 @@ theorem P27 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) 
               have hcert := hDS_class_1 a b c d (by positivity) (by positivity) (by positivity) (by positivity) hs
               convert hcert using 1 <;> ring
 
-end Lean92.Evan_chen_P27
 
 
 theorem P27 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a + b + c + d = 4) : (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 ≤ 1 / a ^ 2 + 1 / b ^ 2 + 1 / c ^ 2 + 1 / d ^ 2) := by
-  exact @Lean92.Evan_chen_P27.P27 a b c d ha hb hc hd h
-
-#print axioms P27
+  exact @P27' a b c d ha hb hc hd h

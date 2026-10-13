@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P29
 
-theorem real_p29 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : ((a + b)^2 + (a + b + 4 * c)^2) / (a * b * c) *(a + b + c) ≥ 100 := by
+theorem real_p29' (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : ((a + b)^2 + (a + b + 4 * c)^2) / (a * b * c) *(a + b + c) ≥ 100 := by
   rw [ge_iff_le]
   rw [← sub_nonneg]
   have hden1_pos : 0 < c := by
@@ -591,10 +582,7 @@ theorem real_p29 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : ((a + b)
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.IneqComp_real_P29
 
 
 theorem real_p29 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) : ((a + b)^2 + (a + b + 4 * c)^2) / (a * b * c) *(a + b + c) ≥ 100 := by
-  exact @Lean92.IneqComp_real_P29.real_p29 a b c ha hb hc
-
-#print axioms real_p29
+  exact @real_p29' a b c ha hb hc

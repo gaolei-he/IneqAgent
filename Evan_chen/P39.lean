@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P39
 
-theorem P39 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 3 / 2 ≤ (a * b * c) ^ 2 / (a ^ 3 * (b + c)) + (a * b * c) ^ 2 / (b ^ 3 * (c + a)) + (a * b * c) ^ 2 / (c ^ 3 * (a + b)) := by
+theorem P39' {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 3 / 2 ≤ (a * b * c) ^ 2 / (a ^ 3 * (b + c)) + (a * b * c) ^ 2 / (b ^ 3 * (c + a)) + (a * b * c) ^ 2 / (c ^ 3 * (a + b)) := by
   let x1 : ℝ := a*b
   let x2 : ℝ := b
   let x3 : ℝ := 1
@@ -154,10 +145,7 @@ theorem P39 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c 
         have hcert := hDS_class_1 x1 x2 x3 (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P39
 
 
 theorem P39 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : 3 / 2 ≤ (a * b * c) ^ 2 / (a ^ 3 * (b + c)) + (a * b * c) ^ 2 / (b ^ 3 * (c + a)) + (a * b * c) ^ 2 / (c ^ 3 * (a + b)) := by
-  exact @Lean92.Evan_chen_P39.P39 a b c ha hb hc h
-
-#print axioms P39
+  exact @P39' a b c ha hb hc h

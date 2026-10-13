@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P6
 
-theorem P6 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a ^ 2 * b ^ 2 * c) + (b ^ 2 * c ^ 2 * a) + (c ^ 2 * a ^ 2 * b) ≤ a ^ 5 + b ^ 5 + c ^ 5 := by
+theorem P6' {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a ^ 2 * b ^ 2 * c) + (b ^ 2 * c ^ 2 * a) + (c ^ 2 * a ^ 2 * b) ≤ a ^ 5 + b ^ 5 + c ^ 5 := by
   rw [← sub_nonneg]
   field_simp
   ring_nf
@@ -100,10 +91,7 @@ theorem P6 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a ^ 2 *
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P6
 
 
 theorem P6 {a b c : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) : (a ^ 2 * b ^ 2 * c) + (b ^ 2 * c ^ 2 * a) + (c ^ 2 * a ^ 2 * b) ≤ a ^ 5 + b ^ 5 + c ^ 5 := by
-  exact @Lean92.Evan_chen_P6.P6 a b c ha hb hc
-
-#print axioms P6
+  exact @P6' a b c ha hb hc

@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.IneqComp_real_P26
 
-theorem real_p26 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : a * b / (a^5 + b^5 + a * b) + b * c / (b^5 + c^5 + b * c) + c * a / (c^5 + a^5 + c * a) ≤ 1 := by
+theorem real_p26' (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : a * b / (a^5 + b^5 + a * b) + b * c / (b^5 + c^5 + b * c) + c * a / (c^5 + a^5 + c * a) ≤ 1 := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < a^5 + a*b + b^5 := by
     first
@@ -126,10 +117,7 @@ theorem real_p26 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.IneqComp_real_P26
 
 
 theorem real_p26 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a * b * c = 1) : a * b / (a^5 + b^5 + a * b) + b * c / (b^5 + c^5 + b * c) + c * a / (c^5 + a^5 + c * a) ≤ 1 := by
-  exact @Lean92.IneqComp_real_P26.real_p26 a b c ha hb hc h
-
-#print axioms real_p26
+  exact @real_p26' a b c ha hb hc h

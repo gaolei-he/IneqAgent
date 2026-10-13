@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P40
 
-theorem P40 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (2 * a + b + c) ^ 2 / (2 * a ^ 2 + (b + c) ^ 2) + (2 * b + c + a) ^ 2 / (2 * b ^ 2 + (c + a) ^ 2) + (2 * c + a + b) ^ 2 / (2 * c ^ 2 + (a + b) ^ 2) ≤ 8 := by
+theorem P40' {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (2 * a + b + c) ^ 2 / (2 * a ^ 2 + (b + c) ^ 2) + (2 * b + c + a) ^ 2 / (2 * b ^ 2 + (c + a) ^ 2) + (2 * c + a + b) ^ 2 / (2 * c ^ 2 + (a + b) ^ 2) ≤ 8 := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < a^2 + 2*a*b + b^2 + 2*c^2 := by
     first
@@ -126,10 +117,7 @@ theorem P40 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c 
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P40
 
 
 theorem P40 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (2 * a + b + c) ^ 2 / (2 * a ^ 2 + (b + c) ^ 2) + (2 * b + c + a) ^ 2 / (2 * b ^ 2 + (c + a) ^ 2) + (2 * c + a + b) ^ 2 / (2 * c ^ 2 + (a + b) ^ 2) ≤ 8 := by
-  exact @Lean92.Evan_chen_P40.P40 a b c ha hb hc h
-
-#print axioms P40
+  exact @P40' a b c ha hb hc h

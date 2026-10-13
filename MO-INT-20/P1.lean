@@ -1,19 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.MO_INT_20_P1
 
 private theorem private_hDS_class_1 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a ≤ b ∧ b ≤ c ∧ c ≤ d → 0 ≤ 3*a^6 + 6*a^5*b + 6*a^5*c + 6*a^5*d + 2*a^4*b^2 + 8*a^4*b*c + 7*a^4*b*d + 3*a^4*c^2 + 8*a^4*c*d + 2*a^4*d^2 - 2*a^3*b^3 - 2*a^3*b^2*c - 3*a^3*b^2*d - 4*a^3*b*c*d - 3*a^3*b*d^2 - 2*a^3*c*d^2 - 2*a^3*d^3 + 2*a^2*b^4 - 3*a^2*b^3*c - 2*a^2*b^3*d - 8*a^2*b^2*c^2 - 19*a^2*b^2*c*d - 8*a^2*b^2*d^2 - 16*a^2*b*c^2*d - 19*a^2*b*c*d^2 - 2*a^2*b*d^3 + 3*a^2*c^4 - 8*a^2*c^2*d^2 - 3*a^2*c*d^3 + 2*a^2*d^4 + 6*a*b^5 + 7*a*b^4*c + 8*a*b^4*d - 3*a*b^3*c^2 - 4*a*b^3*c*d - 2*a*b^2*c^3 - 19*a*b^2*c^2*d - 16*a*b^2*c*d^2 + 8*a*b*c^4 - 4*a*b*c^3*d - 19*a*b*c^2*d^2 - 4*a*b*c*d^3 + 8*a*b*d^4 + 6*a*c^5 + 8*a*c^4*d - 2*a*c^3*d^2 - 3*a*c^2*d^3 + 7*a*c*d^4 + 6*a*d^5 + 3*b^6 + 6*b^5*c + 6*b^5*d + 2*b^4*c^2 + 8*b^4*c*d + 3*b^4*d^2 - 2*b^3*c^3 - 2*b^3*c^2*d + 2*b^2*c^4 - 3*b^2*c^3*d - 8*b^2*c^2*d^2 + 3*b^2*d^4 + 6*b*c^5 + 7*b*c^4*d - 3*b*c^3*d^2 - 2*b*c^2*d^3 + 8*b*c*d^4 + 6*b*d^5 + 3*c^6 + 6*c^5*d + 2*c^4*d^2 - 2*c^3*d^3 + 2*c^2*d^4 + 6*c*d^5 + 3*d^6 := by
   intro a b c d h_a_nonneg_base h_b_nonneg_base h_c_nonneg_base h_d_nonneg_base hsort
@@ -96,7 +86,7 @@ private theorem private_hDS_class_3 : ∀ a b c d : ℝ, 0 ≤ a → 0 ≤ b →
     convert hleaf using 1 <;> ring
   positivity
 
-theorem P1 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b + b * c + c * d + d * a = 1) : 1 / 3 ≤ a ^ 3 / (b + c + d) + b ^ 3 / (c + d + a) + c ^ 3 / (d + a + b) + d ^ 3 / (a + b + c) := by
+theorem P1' {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b + b * c + c * d + d * a = 1) : 1 / 3 ≤ a ^ 3 / (b + c + d) + b ^ 3 / (c + d + a) + c ^ 3 / (d + a + b) + d ^ 3 / (a + b + c) := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < b + c + d := by
     first
@@ -467,10 +457,7 @@ theorem P1 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (
               have hcert := hDS_class_1 a b c d (by positivity) (by positivity) (by positivity) (by positivity) hs
               convert hcert using 1 <;> ring
 
-end Lean92.MO_INT_20_P1
 
 
 theorem P1 {a b c d : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (hd : d > 0) (h : a * b + b * c + c * d + d * a = 1) : 1 / 3 ≤ a ^ 3 / (b + c + d) + b ^ 3 / (c + d + a) + c ^ 3 / (d + a + b) + d ^ 3 / (a + b + c) := by
-  exact @Lean92.MO_INT_20_P1.P1 a b c d ha hb hc hd h
-
-#print axioms P1
+  exact @P1' a b c d ha hb hc hd h

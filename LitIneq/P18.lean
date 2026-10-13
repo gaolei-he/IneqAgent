@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_18
 
 theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤ (0 : ℝ)) (hl1 : (-1/10 : ℝ) ≤ x2) (hu1 : x2 ≤ (9/10 : ℝ)) (hl2 : (-1/10 : ℝ) ≤ x3) (hu2 : x3 ≤ (1/2 : ℝ)) (hl3 : (-1 : ℝ) ≤ x4) (hu3 : x4 ≤ (-1/10 : ℝ)) (hl4 : (-1/10 : ℝ) ≤ x5) (hu4 : x5 ≤ (-1/20 : ℝ)) (hl5 : (-1/10 : ℝ) ≤ x6) (hu5 : x6 ≤ (-3/100 : ℝ)) : (0 : ℝ) ≤ -x1*x4^2 - 1/3*x1 + x2^2*x6 + x3^2*x5 + x4^3 + x4^2 + 4/3*x4 + 36/25 := by
   let t0 : ℝ := (x1 - (-1)) / (1)
@@ -51,7 +42,6 @@ theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (-1 : ℝ) ≤ x1) (hu0 : x1 ≤
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_18
 
 
 set_option linter.style.header false
@@ -62,14 +52,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 18
 name: Butcher's Problem
-source_status: confirmed_transformed
-basis: 1819
-paper_title: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://doi.org/10.1007/s10817-012-9256-3
-source_evidence: paper_examples_extract/bernstein.txt:2333-2337,2351; paper_examples_extract/FormalVerifier.txt:320-321
+reference: Formalization of Bernstein Polynomials and Applications to Global Optimization / A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://doi.org/10.1007/s10817-012-9256-3
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_18_butcher_s_problem :
     ∀ x1 x2 x3 x4 x5 x6 : ℝ,
@@ -87,9 +72,7 @@ theorem box_benchmark_18_butcher_s_problem :
       x6 <= (-3 / 100 : ℝ) →
         0 <= -x1*x4^2 - (1 / 3 : ℝ)*x1 + x2^2*x6 + x3^2*x5 + x4^3 + x4^2 + (4 / 3 : ℝ)*x4 + (36 / 25 : ℝ) := by
   intro x1 x2 x3 x4 x5 x6 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_18.result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_18_butcher_s_problem

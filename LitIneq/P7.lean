@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_07
 
 theorem result (x1 x2 x3 : ℝ) (hl0 : (-3/2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : ℝ)) (hl1 : (-3/2 : ℝ) ≤ x2) (hu1 : x2 ≤ (2 : ℝ)) (hl2 : (-3/2 : ℝ) ≤ x3) (hu2 : x3 ≤ (2 : ℝ)) : (0 : ℝ) ≤ x1*x2^2 + x1*x3^2 - 11/10*x1 + 207/20 := by
   let t0 : ℝ := (x1 - (-3/2)) / (7/2)
@@ -36,7 +27,6 @@ theorem result (x1 x2 x3 : ℝ) (hl0 : (-3/2 : ℝ) ≤ x1) (hu0 : x1 ≤ (2 : �
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_07
 
 
 set_option linter.style.header false
@@ -47,13 +37,8 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 7
 name: C4
-source_status: confirmed_from_appirl_citation_and_code
-basis: 209
-paper_title: A neural network modeled by an adaptive Lotka-Volterra system
-source_evidence: /home/ljh/APPIRL/proof/Example.py:52-56; /tmp/2503.06592v1.layout.txt:521-529; /tmp/2503.06592v1.layout.txt:537; /tmp/2503.06592v1.layout.txt:751-752
+reference: A neural network modeled by an adaptive Lotka-Volterra system
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_07_c4 :
     ∀ x1 x2 x3 : ℝ,
@@ -65,9 +50,7 @@ theorem box_benchmark_07_c4 :
       x3 <= 2 →
         0 <= x1*x2^2 + x1*x3^2 - (11 / 10 : ℝ)*x1 + (207 / 20 : ℝ) := by
   intro x1 x2 x3 ⟨hl0, hu0, hl1, hu1, hl2, hu2⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_07.result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_07_c4

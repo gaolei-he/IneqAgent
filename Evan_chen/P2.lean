@@ -1,21 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
-import Mathlib.Tactic.GCongr
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P2
 
-theorem P2 {a b c : ℝ} : a ^ 2 * b * c + b ^ 2 * c * a + c ^ 2 * a * b ≤ a ^ 4 + b ^ 4 + c ^ 4 := by
+theorem P2' {a b c : ℝ} : a ^ 2 * b * c + b ^ 2 * c * a + c ^ 2 * a * b ≤ a ^ 4 + b ^ 4 + c ^ 4 := by
   have hnum : (0 : ℝ) ≤ a^4 - a^2*b*c - a*b^2*c - a*b*c^2 + b^4 + c^4 := by
     have hbackend : (0 : ℝ) ≤ ((a)^4) + ((-1)*((a)^2)*(b)*(c)) + ((-1)*(a)*((b)^2)*(c)) + ((-1)*(a)*(b)*((c)^2)) + ((b)^4) + ((c)^4) := by
       have hs0 : (0 : ℝ) ≤ (1/1)*(-(1/3)*(a^2) - (1/3)*a*b - (1/3)*(b^2) + c^2)^2 + (3/2)*(-(1/3)*(a^2) - (1/6)*a*b - (1/6)*a*c + (2/3)*b*c)^2 + (9/8)*(-(4/9)*(a^2) - (1/9)*a*b - (1/3)*a*c + (8/9)*(b^2))^2 + (2/1)*(-(1/4)*(a^2) - (1/4)*a*b + (1/2)*a*c)^2 + (8/3)*(-(3/8)*(a^2) + (3/8)*a*b)^2 + (0/1)*(0)^2 := by positivity
@@ -26,10 +16,7 @@ theorem P2 {a b c : ℝ} : a ^ 2 * b * c + b ^ 2 * c * a + c ^ 2 * a * b ≤ a ^
   rw [← sub_nonneg]
   convert hnum using 1 <;> ring
 
-end Lean92.Evan_chen_P2
 
 
 theorem P2 {a b c : ℝ} : a ^ 2 * b * c + b ^ 2 * c * a + c ^ 2 * a * b ≤ a ^ 4 + b ^ 4 + c ^ 4 := by
-  exact @Lean92.Evan_chen_P2.P2 a b c
-
-#print axioms P2
+  exact @P2' a b c

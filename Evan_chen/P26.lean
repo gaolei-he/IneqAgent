@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.Evan_chen_P26
 
-theorem P26 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (a / (2 * a ^ 2 + a + 1) + b / (2 * b ^ 2 + b + 1) + c / (2 * c ^ 2 + c + 1)) ≤ 3 / 4 := by
+theorem P26' {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (a / (2 * a ^ 2 + a + 1) + b / (2 * b ^ 2 + b + 1) + c / (2 * c ^ 2 + c + 1)) ≤ 3 / 4 := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < a*(2*a + 1) + 1 := by
     nlinarith [sq_nonneg (a + 1/4)]
@@ -120,10 +111,7 @@ theorem P26 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c 
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.Evan_chen_P26
 
 
 theorem P26 {a b c : ℝ} (ha : a > 0) (hb : b > 0) (hc : c > 0) (h : a + b + c = 3) : (a / (2 * a ^ 2 + a + 1) + b / (2 * b ^ 2 + b + 1) + c / (2 * c ^ 2 + c + 1)) ≤ 3 / 4 := by
-  exact @Lean92.Evan_chen_P26.P26 a b c ha hb hc h
-
-#print axioms P26
+  exact @P26' a b c ha hb hc h

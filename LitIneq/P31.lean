@@ -9,14 +9,13 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 31
 id: A11
 name: But 6
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: x6*x2^2 + x5*x3^2 - x1*x4^2 + x4^3 + x4^2 - 1/3*x1 + 4/3*x4 + 14393333333/10000000000
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 11; Appendix A Problem 11
+source_location: Table 1 Ex 11; Appendix A Problem 11
 
 The polynomial and constraints preserve the source expression and order.
-The theorem constant uses the z3_adjustment above for an exact inequality.
+The constant is adjusted from original_f, as recorded in the benchmark catalog.
 -/
 theorem box_benchmark_31_a11_but_6 :
     ∀ x1 x2 x3 x4 x5 x6 : ℝ,

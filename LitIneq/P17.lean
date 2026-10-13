@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_17
 
 theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (4 : ℝ) ≤ x1) (hu0 : x1 ≤ (3969/625 : ℝ)) (hl1 : (4 : ℝ) ≤ x2) (hu1 : x2 ≤ (3969/625 : ℝ)) (hl2 : (4 : ℝ) ≤ x3) (hu2 : x3 ≤ (3969/625 : ℝ)) (hl3 : (4 : ℝ) ≤ x4) (hu3 : x4 ≤ (3969/625 : ℝ)) (hl4 : (4 : ℝ) ≤ x5) (hu4 : x5 ≤ (3969/625 : ℝ)) (hl5 : (4 : ℝ) ≤ x6) (hu5 : x6 ≤ (3969/625 : ℝ)) : (0 : ℝ) ≤ -x1^2*x4 + x1*x2*x4 + x1*x2*x5 - x1*x2*x6 + x1*x3*x4 - x1*x3*x5 + x1*x3*x6 - x1*x4^2 + x1*x4*x5 + x1*x4*x6 - x2^2*x5 - x2*x3*x4 + x2*x3*x5 + x2*x3*x6 + x2*x4*x5 - x2*x5^2 + x2*x5*x6 - x3^2*x6 + x3*x4*x6 + x3*x5*x6 - x3*x6^2 - x4*x5*x6 := by
   let t0 : ℝ := (x1 - (4)) / (1469/625)
@@ -51,7 +42,6 @@ theorem result (x1 x2 x3 x4 x5 x6 : ℝ) (hl0 : (4 : ℝ) ≤ x1) (hu0 : x1 ≤ 
   rw [hid]
   positivity
 
-end Lean92.BoxPoly45_BoxPoly45_17
 
 
 set_option linter.style.header false
@@ -62,14 +52,9 @@ namespace Leanpro.BoxJsonlWithSources
 /-
 dataset_index: 17
 name: Flyspeck Delta 4717061266
-source_status: confirmed_transformed
-basis: 1819
-paper_title: A Tool for Formal Verification of Nonlinear Inequalities
-paper_url: https://github.com/flyspeck/flyspeck
-source_evidence: paper_examples_extract/FormalVerifier.txt:340-355
+reference: A Tool for Formal Verification of Nonlinear Inequalities
+reference_url: https://github.com/flyspeck/flyspeck
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_17_flyspeck_delta_4717061266 :
     ∀ x1 x2 x3 x4 x5 x6 : ℝ,
@@ -87,9 +72,7 @@ theorem box_benchmark_17_flyspeck_delta_4717061266 :
       x6 <= (3969 / 625 : ℝ) →
         0 <= -x1^2*x4 + x1*x2*x4 + x1*x2*x5 - x1*x2*x6 + x1*x3*x4 - x1*x3*x5 + x1*x3*x6 - x1*x4^2 + x1*x4*x5 + x1*x4*x6 - x2^2*x5 - x2*x3*x4 + x2*x3*x5 + x2*x3*x6 + x2*x4*x5 - x2*x5^2 + x2*x5*x6 - x3^2*x6 + x3*x4*x6 + x3*x5*x6 - x3*x6^2 - x4*x5*x6 := by
   intro x1 x2 x3 x4 x5 x6 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4, hl5, hu5⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_17.result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 x6 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num) (by convert hl5 using 1 <;> norm_num) (by convert hu5 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_17_flyspeck_delta_4717061266

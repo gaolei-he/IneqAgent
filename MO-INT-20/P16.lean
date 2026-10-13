@@ -1,20 +1,11 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.MO_INT_20_P16
 
-theorem P16 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (h : a + b + c = 1) : 1 / (a^2 - 4*a + 9) + 1 / (b^2 - 4*b + 9) + 1 / (c^2 - 4*c + 9) ≤ 7 / 18 := by
+theorem P16' (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (h : a + b + c = 1) : 1 / (a^2 - 4*a + 9) + 1 / (b^2 - 4*b + 9) + 1 / (c^2 - 4*c + 9) ≤ 7 / 18 := by
   rw [← sub_nonneg]
   have hden1_pos : 0 < a*(a - 4) + 9 := by
     nlinarith [sq_nonneg (a - 2)]
@@ -120,10 +111,7 @@ theorem P16 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (h : a + 
         have hcert := hDS_class_1 a b c (by positivity) (by positivity) (by positivity) hs
         convert hcert using 1 <;> ring_nf
 
-end Lean92.MO_INT_20_P16
 
 
 theorem P16 (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (h : a + b + c = 1) : 1 / (a^2 - 4*a + 9) + 1 / (b^2 - 4*b + 9) + 1 / (c^2 - 4*c + 9) ≤ 7 / 18 := by
-  exact @Lean92.MO_INT_20_P16.P16 a b c ha hb hc h
-
-#print axioms P16
+  exact @P16' a b c ha hb hc h

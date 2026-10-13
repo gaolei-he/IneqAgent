@@ -1,18 +1,9 @@
 import Mathlib
-import Mathlib.Data.Real.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.Positivity
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.NormNum
-import Mathlib.Tactic.Convert
-import Mathlib.Tactic.IntervalCases
 set_option maxHeartbeats 0
 set_option maxRecDepth 100000
 set_option linter.unnecessarySeqFocus false
 set_option linter.unusedVariables false
 
-namespace Lean92.BoxPoly45_BoxPoly45_25
 
 theorem result (x1 x2 x3 x4 x5 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5 : ℝ)) (hl1 : (-5 : ℝ) ≤ x2) (hu1 : x2 ≤ (5 : ℝ)) (hl2 : (-5 : ℝ) ≤ x3) (hu2 : x3 ≤ (5 : ℝ)) (hl3 : (-5 : ℝ) ≤ x4) (hu3 : x4 ≤ (5 : ℝ)) (hl4 : (-5 : ℝ) ≤ x5) (hu4 : x5 ≤ (5 : ℝ)) : (0 : ℝ) ≤ 81/4 + x1 + x2 + x3 + x4 + x5^2 - 1*x5 := by
   have hcert : (0 : ℝ) ≤ (x1) + (x2) + (x3) + (x4) + ((x5)^2) + ((-1)*(x5)) + (81/4) := by
@@ -52,7 +43,6 @@ theorem result (x1 x2 x3 x4 x5 : ℝ) (hl0 : (-5 : ℝ) ≤ x1) (hu0 : x1 ≤ (5
     linarith
   convert hcert using 1 <;> ring
 
-end Lean92.BoxPoly45_BoxPoly45_25
 
 
 set_option linter.style.header false
@@ -64,14 +54,11 @@ namespace Leanpro.BoxJsonlWithSources
 dataset_index: 25
 id: A05
 name: Wrig 5
-source_status: confirmed_transformed
-paper_title: An efficient algorithm for range computation of polynomials using the Bernstein form
-paper_url: https://doi.org/10.1007/s10898-008-9382-y
+reference: An efficient algorithm for range computation of polynomials using the Bernstein form
+reference_url: https://doi.org/10.1007/s10898-008-9382-y
 original_f: x5^2 + x1 + x2 + x3 + x4 - x5 - 10 + 121/4
-source_evidence: PDF DOI 10.1007/s10898-008-9382-y; Table 1 Ex 5; Appendix A Problem 5
+source_location: Table 1 Ex 5; Appendix A Problem 5
 
-The theorem statement is a direct Lean syntax translation of the JSONL record:
-constraints are kept in their listed order, and f is not algebraically transformed.
 -/
 theorem box_benchmark_25_a05_wrig_5 :
     ∀ x1 x2 x3 x4 x5 : ℝ,
@@ -87,9 +74,7 @@ theorem box_benchmark_25_a05_wrig_5 :
       x5 <= 5 →
         0 <= (81 / 4 : ℝ) + x1 + x2 + x3 + x4 + x5^2 - 1*x5 := by
   intro x1 x2 x3 x4 x5 ⟨hl0, hu0, hl1, hu1, hl2, hu2, hl3, hu3, hl4, hu4⟩
-  have htranslated := @Lean92.BoxPoly45_BoxPoly45_25.result x1 x2 x3 x4 x5 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num)
+  have htranslated := @result x1 x2 x3 x4 x5 (by convert hl0 using 1 <;> norm_num) (by convert hu0 using 1 <;> norm_num) (by convert hl1 using 1 <;> norm_num) (by convert hu1 using 1 <;> norm_num) (by convert hl2 using 1 <;> norm_num) (by convert hu2 using 1 <;> norm_num) (by convert hl3 using 1 <;> norm_num) (by convert hu3 using 1 <;> norm_num) (by convert hl4 using 1 <;> norm_num) (by convert hu4 using 1 <;> norm_num)
   convert htranslated using 1 <;> ring
 
 end Leanpro.BoxJsonlWithSources
-
-#print axioms Leanpro.BoxJsonlWithSources.box_benchmark_25_a05_wrig_5
